@@ -112,10 +112,10 @@ class Filesystem implements StorageableInterface
 	 */
 	protected function moveFile($file, $filePath)
 	{
-		if (!rename($file, $filePath))
+		if (!copy($file, $filePath))
         {
             $error = error_get_last();
-            throw new Exceptions\FileException(sprintf('Could not move the file "%s" to "%s" (%s)', $file, $filePath, strip_tags($error['message'])));
+            throw new Exceptions\FileException(sprintf('Could not move (actually copy) the file "%s" to "%s" (%s)', $file, $filePath, strip_tags($error['message'])));
         }
 	}
 
