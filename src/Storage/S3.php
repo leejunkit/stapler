@@ -47,11 +47,11 @@ class S3 implements StorageableInterface
 	public function url($styleName)
 	{
 		if ($cdn = getenv('AWS_ASSETS_CLOUDFRONT_DOMAIN')) {
-			if (App::environment() === 'production') {
+			if (\App::environment() === 'production') {
 				return '//' . $cdn . $this->path($styleName);
 			}
 		}
-		
+
 		return $this->s3Client->getObjectUrl($this->attachedFile->s3_object_config['Bucket'], $this->path($styleName));
 	}
 
