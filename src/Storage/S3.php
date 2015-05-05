@@ -48,7 +48,7 @@ class S3 implements StorageableInterface
 	{
 		if ($cdn = getenv('AWS_ASSETS_CLOUDFRONT_DOMAIN')) {
 			if (\App::environment() === 'production') {
-				return '//' . $cdn . $this->path($styleName);
+				return '//' . $cdn . '/' . $this->path($styleName);
 			}
 		}
 
